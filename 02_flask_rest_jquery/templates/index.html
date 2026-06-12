@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>냉장고 재고 관리 - REST API</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1>냉장고 재고 관리</h1>
+
+    <section class="form-section">
+        <h2 id="formTitle">식재료 등록</h2>
+
+        <form id="ingredientForm">
+            <input type="hidden" id="ingredientId">
+
+            <p>
+                이름
+                <input type="text" id="name" required>
+            </p>
+
+            <p>
+                분류
+                <input type="text" id="category" placeholder="채소, 육류, 음료 등" required>
+            </p>
+
+            <p>
+                보관 방식
+                <select id="storageType" required>
+                    <option value="냉장">냉장</option>
+                    <option value="냉동">냉동</option>
+                    <option value="실온">실온</option>
+                </select>
+            </p>
+
+            <p>
+                수량
+                <input type="number" id="quantity" min="1" required>
+            </p>
+
+            <p>
+                단위
+                <input type="text" id="unit" placeholder="개, 병, g" required>
+            </p>
+
+            <p>
+                유통기한
+                <input type="date" id="expireDate" required>
+            </p>
+
+            <p>
+                메모
+                <textarea id="memo"></textarea>
+            </p>
+
+            <div class="form-buttons">
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    등록
+                </button>
+
+                <button type="button" class="cancel-btn" id="cancelBtn">
+                    취소
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <section class="list-section">
+        <div class="section-title">
+            🧊 보관 중인 식재료
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>분류</th>
+                    <th>보관</th>
+                    <th>수량</th>
+                    <th>유통기한</th>
+                    <th>상태</th>
+                    <th>메모</th>
+                    <th>관리</th>
+                </tr>
+            </thead>
+
+            <tbody id="ingredientTableBody">
+            </tbody>
+        </table>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>
