@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>식재료 등록</title>
+</head>
+<body>
+    <h1>식재료 등록</h1>
+
+    <form action="/add" method="POST" class="page-form">
+        <p>
+            이름:
+            <input type="text" name="name" required>
+        </p>
+
+        <p>
+            분류:
+            <input type="text" name="category" placeholder="채소, 육류, 음료 등" required>
+        </p>
+
+        <p>
+            보관 방식:
+            <select name="storage_type" required>
+                <option value="냉장">냉장</option>
+                <option value="냉동">냉동</option>
+                <option value="실온">실온</option>
+            </select>
+        </p>
+
+        <p>
+            수량:
+            <input type="number" name="quantity" min="1" required>
+        </p>
+
+        <p>
+            단위:
+            <input type="text" name="unit" placeholder="개, 병, g" required>
+        </p>
+
+        <p>
+            유통기한:
+            <input type="date" name="expire_date" required>
+        </p>
+
+        <p>
+            메모:
+            <textarea name="memo"></textarea>
+        </p>
+
+        <button type="submit">등록</button>
+    </form>
+
+    <a href="/">목록으로</a>
+</body>
+</html>

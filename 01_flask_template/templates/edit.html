@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>식재료 수정</title>
+</head>
+<body>
+    <h1>식재료 수정</h1>
+
+    <form action="/edit/{{ ingredient.id }}" method="POST" class="page-form">
+        <p>
+            이름:
+            <input type="text" name="name" value="{{ ingredient.name }}" required>
+        </p>
+
+        <p>
+            분류:
+            <input type="text" name="category" value="{{ ingredient.category }}" required>
+        </p>
+
+        <p>
+            보관 방식:
+            <select name="storage_type" required>
+                <option value="냉장" {% if ingredient.storage_type == "냉장" %}selected{% endif %}>냉장</option>
+                <option value="냉동" {% if ingredient.storage_type == "냉동" %}selected{% endif %}>냉동</option>
+                <option value="실온" {% if ingredient.storage_type == "실온" %}selected{% endif %}>실온</option>
+            </select>
+        </p>
+
+        <p>
+            수량:
+            <input type="number" name="quantity" value="{{ ingredient.quantity }}" min="1" required>
+        </p>
+
+        <p>
+            단위:
+            <input type="text" name="unit" value="{{ ingredient.unit }}" required>
+        </p>
+
+        <p>
+            유통기한:
+            <input type="date" name="expire_date" value="{{ ingredient.expire_date }}" required>
+        </p>
+
+        <p>
+            메모:
+            <textarea name="memo">{{ ingredient.memo }}</textarea>
+        </p>
+
+        <button type="submit">수정</button>
+    </form>
+
+    <a href="/">목록으로</a>
+</body>
+</html>
